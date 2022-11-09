@@ -1,0 +1,60 @@
+﻿@model ClienteModel
+
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+        Editar Cliente
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Editar" asp-controller="Mantenedor" method="post">
+            <input asp-for="IdCliente" type="hidden" class="form-control">
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input asp-for="Nombre" type="text" class="form-control">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">NIF</label>
+                <input asp-for="Nif" type="text" class="form-control">
+                <span asp-validation-for="Nif" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Domicilo</label>
+                <input asp-for="Domicilio" type="text" class="form-control">
+                <span asp-validation-for="Domicilio" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">CP</label>
+                <input asp-for="Cp" type="text" class="form-control">
+                <span asp-validation-for="Cp" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Provincia</label>
+                <input asp-for="Provincia" type="text" class="form-control">
+                <span asp-validation-for="Provincia" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">País</label>
+                <input asp-for="Pais" type="text" class="form-control">
+                <span asp-validation-for="Pais" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha Alta</label>
+                <input asp-for="Fecha_Alta" type="text" class="form-control">
+                <span asp-validation-for="Fecha_Alta" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-warning">Volver a la lista</a>
+            <a>Volver a la Lista</a>
+        </form>
+
+    </div>
+</div>

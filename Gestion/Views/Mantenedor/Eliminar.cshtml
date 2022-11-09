@@ -1,0 +1,30 @@
+﻿@model ClienteModel
+
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Eliminar Cliente
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Eliminar" asp-controller="Mantenedor" method="post">
+            <input asp-for="IdCliente" type="hidden" class="form-control">
+
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>
+                <div>
+                    ¿Desea eliminar el cliente: @Html.DisplayTextFor(m => m.Nombre) ?
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-warning">Volver a la lista</a>
+            
+        </form>
+
+    </div>
+</div>
