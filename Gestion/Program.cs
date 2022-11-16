@@ -28,6 +28,9 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Mantenedor}/{action=Listar}/{id?}");
+   // pattern: "{controller=Mantenedor}/{action=Listar}/{id?}");
+    pattern: "{controller=Home}/{action=Menu}/{id?}");
+
+
 
 app.Run();

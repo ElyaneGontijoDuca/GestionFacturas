@@ -1,4 +1,6 @@
-﻿namespace Gestion.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Gestion.Models
 {
     public class FacturaModel
     {
@@ -6,7 +8,8 @@
 
         public int IdCliente { get; set; }
 
+        [Required(ErrorMessage = "El campo Fecha es obligatorio")]
+        [DataType(DataType.Date)]
         public DateTime Fecha { get; set; }
-
     }
 }

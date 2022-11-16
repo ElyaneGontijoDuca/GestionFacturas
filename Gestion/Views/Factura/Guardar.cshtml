@@ -1,0 +1,38 @@
+﻿@model FacturaModel
+
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+        Factura
+    </div>
+    <div class="card-body">
+
+
+        <form asp-action="Editar" asp-controller="Factura" method="post">
+            <input asp-for="IdFactura" type="hidden" class="form-control">
+
+            <div class="mb-3">
+                <label class="form-label">Cliente</label>
+                <input asp-for="IdCliente" type="text" class="form-control">
+                <span asp-validation-for="IdCliente" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha</label>
+                <input asp-for="Fecha" type="date" class="form-control">
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+
+            <br>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Listar" asp-controller="Factura" class="btn btn-warning">Cancelar</a>
+        </form>
+
+    </div>
+</div>

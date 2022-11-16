@@ -5,24 +5,24 @@ using Gestion.Models;
 
 namespace Gestion.Controllers
 {
-    public class MantenedorController : Controller
+    public class FacturaController : Controller
     {
-        ClienteDatos _clienteDatos = new ClienteDatos(); 
+        FacturaDatos _facturaDatos = new FacturaDatos();
 
         public IActionResult Listar()
         {
-            //La vista mostrará una lista de Clientes
-            var oLista = _clienteDatos.Listar(); 
+            //La vista mostrará una lista deFacturas
+            var oLista = _facturaDatos.Listar();
 
 
             return View(oLista);
         }
 
-        //Recibir nombre de cliente 
-        public IActionResult Consulta(string nombre)
+        //Recibir nombre deFactura 
+        public IActionResult Consulta(int idfactura)
         {
             //Metodo solo devuelve la vista
-            var olista = _clienteDatos.ConsultaCliente(nombre);
+            var olista = _facturaDatos.ConsultaFactura(idfactura);
             return View(olista);
 
         }
@@ -35,61 +35,61 @@ namespace Gestion.Controllers
         }
 
         [HttpPost]
-        public IActionResult Guardar(ClienteModel oCliente)
+        public IActionResult Guardar(FacturaModel ofactura)
         {
 
             //Metodo recibe el objeto para guardalo en bd 
             if (!ModelState.IsValid)
                 return View();
 
-            var respuesta = _clienteDatos.Guardar(oCliente);
+            var respuesta = _facturaDatos.Guardar(ofactura);
 
             if (respuesta)
                 return RedirectToAction("Listar");
-            else 
+            else
                 return View();
         }
 
         //metodo para recibir el objeto 
-        public IActionResult Editar(int IdCliente)
+        public IActionResult Editar(int IdFactura)
         {
             //Metodo solo devuelve la vista
-            var oCliente = _clienteDatos.Obtener(IdCliente);
-            return View(oCliente);
+            var ofactura = _facturaDatos.Obtener(IdFactura);
+            return View(ofactura);
 
         }
 
 
         [HttpPost]      //metodo para modificar el objeto recibido  
-        public IActionResult Editar(ClienteModel ocliente)
+        public IActionResult Editar(FacturaModel ofactura)
         {
-           if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return View();
-            var respuesta = _clienteDatos.Editar(ocliente);
+            var respuesta = _facturaDatos.Editar(ofactura);
 
             if (respuesta)
                 return RedirectToAction("Listar");
-            else 
+            else
                 return View();
 
         }
 
-        
+
         //metodo para recibir el objeto 
-        public IActionResult Eliminar(int IdCliente)
+        public IActionResult Eliminar(int IdFactura)
         {
             //Metodo solo devuelve la vista
-            var oCliente = _clienteDatos.Obtener(IdCliente);
-            return View(oCliente);
+            var ofactura = _facturaDatos.Obtener(IdFactura);
+            return View(ofactura);
 
         }
 
 
         [HttpPost]      //metodo para modificar el objeto recibido  
-        public IActionResult Eliminar(ClienteModel ocliente)
+        public IActionResult Eliminar(FacturaModel ofactura)
         {
-           
-            var respuesta = _clienteDatos.Eliminar(ocliente.IdCliente);
+
+            var respuesta = _facturaDatos.Eliminar(ofactura.IdFactura);
 
             if (respuesta)
                 return RedirectToAction("Listar");

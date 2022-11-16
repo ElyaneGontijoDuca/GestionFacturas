@@ -5,13 +5,7 @@ using System.Diagnostics;
 namespace Gestion.Controllers
 {
     public class HomeController : Controller
-    {
-       // private readonly ILogger<HomeController> _logger;
-
-       // public HomeController(ILogger<HomeController> logger)
-     //   {
-     //       _logger = logger;
-      //  }
+    {       
 
         public IActionResult Index()
         {
@@ -24,6 +18,11 @@ namespace Gestion.Controllers
         }
 
         public IActionResult Cliente()
+        {
+            return View();
+        }
+
+        public IActionResult Menu()
         {
             return View();
         }

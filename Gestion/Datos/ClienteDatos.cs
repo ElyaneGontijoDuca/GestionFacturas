@@ -77,7 +77,41 @@ namespace Gestion.Datos
             //retorna el objecto cliente
             return oCliente;
         }
+        //Obtenendo cliente
+        public ClienteModel ConsultaCliente(string nombre)
+        {
+            var oCliente = new ClienteModel();
 
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                //conexión al procedimiento almacenado Procedimiento de lista de clientes
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("[sp_Consulta_Cliente]", conexion);
+                cmd.Parameters.AddWithValue("Nombre", nombre);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var br = cmd.ExecuteReader())
+                {
+                    while (br.Read())
+                    { // lectura del procedimiento almacenado
+
+                        oCliente.IdCliente = Convert.ToInt32(br["IdCliente"]);
+                        oCliente.Nombre = br["Nombre"].ToString();
+                        oCliente.Domicilio = br["Domicilio"].ToString();
+                        oCliente.Nif = br["Nif"].ToString();
+                        oCliente.Cp = br["Cp"].ToString();
+                        oCliente.Provincia = br["Provincia"].ToString();
+                        oCliente.Fecha_Alta = Convert.ToDateTime(br["Fecha_Alta"]);
+                        oCliente.Pais = br["Pais"].ToString();
+                    }
+                }
+
+            }
+            //retorna la colsulta de cliente
+            return oCliente;
+        }
         public bool Guardar(ClienteModel oCliente){
             bool rpta;
 

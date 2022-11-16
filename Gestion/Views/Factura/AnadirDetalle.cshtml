@@ -1,0 +1,62 @@
+﻿@model List<DetalleModel>
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-left">
+    <h1 class="display-1">@ViewData["Title"]</h1>
+    <p>Detalle</p>
+</div>
+
+<br />
+<br />
+
+
+<div class="card">
+    <div class="card-header">
+        Añadir en la factura
+        <a class="btn btn-success"><i class="bi bi-pencil-fill"></i>+</a>
+        <!-- <a asp-action="Guardar" asp-controller="Detalle" class="btn btn-success"><i class="bi bi-pencil-fill"></i>+</a> -->
+        <hr />
+        <a><a asp-action="Editar" asp-controller="Detalle" a class="dropdown-item">Alterar Detalle</a></a>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                         <th>Nº de Factura</th>
+                         <th>Concepto</th>
+                         <th>Unidades</th>
+                         <th>Precio</th>
+                         <th>Importe</th> 
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.IdFactura</td>
+                        <td>@item.Concepto</td>
+                        <td>@item.Unidades</td>
+                        <td>@item.Precio</td>
+                        <td>@item.Importe</td>
+           
+
+                        <td>
+                            <a asp-action="Editar" asp-controller="Detalle" class="btn btn-primary btn-sm" asp-route-IdCliente="@item.IdFactura"><i class="bi bi-pencil-fill"></i>Editar</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+
+
+
+    </div>
+</div>
+

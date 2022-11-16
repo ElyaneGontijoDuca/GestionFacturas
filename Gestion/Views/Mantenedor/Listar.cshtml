@@ -4,13 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="text-left">
+    <h1 class="display-1">@ViewData["Title"]</h1>
+    <p>Mantenimiento de Clientes</p>
+</div>
+
+<br /><br />
+
+
 <div class="card">
     <div class="card-header">
-        Crear Cliente
+        Nuevo Cliente
+        <a asp-action="Guardar" asp-controller="Mantenedor" class="btn btn-success"><i class="bi bi-pencil-fill"></i>+</a>
+        <hr />
     </div>
     <div class="card-body">
-        <a asp-action="Guardar" asp-controller="Mantenedor" class="btn btn-success"><i class="bi bi-pencil-fill"></i>Crear Nuevo</a>
-        <hr />
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -44,6 +52,13 @@
                 }
             </tbody>
         </table>
+        <hr />    
+
+
 
     </div>
 </div>
+
+
+@Html.TextBox("nombre")
+<input type="submit" value="Consultar" a asp-action="Consultar" asp-controller="Mantenedor" />

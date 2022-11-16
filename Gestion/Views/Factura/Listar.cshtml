@@ -1,0 +1,67 @@
+﻿@model List<FacturaModel>
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-left">
+    <h1 class="display-1">@ViewData["Title"]</h1>
+    <p>Mantenimiento de Facturas</p>
+</div>
+
+<br />
+<br />
+
+
+<div class="card">
+    <div class="card-header">
+       Nueva Factura
+       
+       <a asp-action="Guardar" asp-controller="Factura" class="btn btn-success"><i class="bi bi-pencil-fill"></i>+</a> 
+        <hr />
+        <a><a asp-action="Editar" asp-controller="Factura" a class="dropdown-item">Alterar Factura</a></a>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nº de Factura</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+               <!-- <th>Concepto</th>
+                    <th>Unidades</th>
+                    <th>Precio</th>
+                    <th>Importe</th> -->                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.IdFactura</td>
+                        <td>@item.IdCliente </td>
+                        <td>@item.Fecha</td>
+                        <!-- <th>Concepto</th>
+                        <th>Unidades</th>
+                        <th>Precio</th>
+                        <th>Importe</th> -->
+
+                        <td>
+                            <a asp-action="Editar" asp-controller="Factura" class="btn btn-primary btn-sm" asp-route-IdFactura="@item.IdFactura"><i class="bi bi-pencil-fill"></i>Editar</a>
+                            <a asp-action="AnadirDetalle" asp-controller="Factura" class="btn btn-primary btn-sm" asp-route-IdFactura="@item.IdFactura"><i class="bi bi-pencil-fill"></i>Añadir</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+
+
+
+    </div>
+</div>
+
+

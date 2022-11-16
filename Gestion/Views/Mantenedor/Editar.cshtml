@@ -9,7 +9,7 @@
 
 <div class="card">
     <div class="card-header">
-        Editar Cliente
+        Cliente
     </div>
     <div class="card-body">
 
@@ -48,13 +48,12 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Fecha Alta</label>
-                <input asp-for="Fecha_Alta" type="text" class="form-control">
+                <input asp-for="Fecha_Alta" type="date" class="form-control">
                 <span asp-validation-for="Fecha_Alta" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-warning">Volver a la lista</a>
-            <a>Volver a la Lista</a>
-        </form>
+            <a asp-action="Menu" asp-controller="Home" class="btn btn-warning">Cancelar</a>
+          </form>
 
     </div>
 </div>
